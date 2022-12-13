@@ -53,17 +53,18 @@ function App() {
   function playAgain(){
     setShowAnswers(false)
     setTrivia(setQuestions(data.results))
-    setCount(prevState => 0)
+    setCount(prevState => prevState = 0)
   }
   
   
   return (
     <div className="App">
-      {/* <Intro beginQuiz={()=>showQuiz()} /> */}
-      {allTrivias}
-      {showAnswers?<button onClick={playAgain} className='button-check'>Play again</button>:
-        <button onClick={showQuizResults} className='button-check'>Check answers</button>}
-        {count}
+      {!startQuiz && <Intro beginQuiz={()=>showQuiz()} />}
+      {startQuiz && allTrivias}
+      {showAnswers && <div className='score-display'> <h3>You scored {count}/{trivias.length} correct answers </h3>
+      <button onClick={playAgain} className='button-check'>Play again</button>
+      </div>}
+      {!showAnswers && startQuiz && <button onClick={showQuizResults} className='button-check'>Check answers</button> }
     </div>
   );
 }

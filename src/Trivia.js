@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import { nanoid } from 'nanoid'
 import AnswerChoice from './AnswerChoice'
 import Result from './Result'
@@ -22,13 +22,18 @@ function Trivia(props) {
                 return {...el, isSelected:!el.isSelected}
             } else return {...el, isSelected:false}
         }))
-        for(let el of triviaChoices){
-            if(el.isSelected && el.isTheAnswer){
+
+    }
+    const [triviaChoices, setTriviaChoices] = useState(shuffle(possibleAnswers))
+
+    useEffect(()=>{
+        for(let obj of triviaChoices){
+            if(obj.isSelected && obj.isTheAnswer){
                 props.countRightAnswers()
             }
         }
-    }
-    const [triviaChoices, setTriviaChoices] = useState(shuffle(possibleAnswers))
+    }, [triviaChoices])
+
 
     
     /* display questions for user to answer quiz */
