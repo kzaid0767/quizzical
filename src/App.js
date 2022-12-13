@@ -1,7 +1,6 @@
 import './App.css';
 import Intro from './Intro';
-import {useState } from 'react';
-import data from './data';
+import {useState, useEffect } from 'react';
 import Trivia from './Trivia';
 import { nanoid } from 'nanoid';
 
@@ -11,10 +10,23 @@ function App() {
   const [startQuiz, setStartQuiz] = useState(false)
 
   /* setting imported data in state */
-  const [trivias, setTrivia] = useState(setQuestions(data.results))
+  const [trivias, setTrivia] = useState([])
 
   const [count, setCount] = useState(0)
   const [showAnswers, setShowAnswers]=useState(false)
+
+  /* fetch data API */
+
+ useEffect(
+    ()=>{
+      fetch('https://opentdb.com/api.php?amount=5')
+        .then(res => res.json())
+        .then(data => {
+          setTrivia(setQuestions(data.results))
+        })
+    },[]
+  )
+
 
   /* add unique ids to the five questions */
   function setQuestions(inputArray){
@@ -29,30 +41,40 @@ function App() {
     setCount(prevState => prevState+1)
   }
   
+  function countRightAnswersDown(){
+    setCount(prevState => prevState-1)
+  }
   
 
   function showQuiz(){
     setStartQuiz(true)
   }
 
-
+  /* 5 questions or answers generated here */
   const allTrivias = trivias.map(trivia =>
     <Trivia allData={trivia}
       key={trivia.id}
       showAnswers={showAnswers}
       questionNumber={trivias.indexOf(trivia)+1}
       count={count}
-      countRightAnswers={()=>countRightAnswers(count)}
+      countRightAnswers={()=>countRightAnswers()}
+      countRightAnswersDown={()=>countRightAnswersDown()}
       />
   )
 
+  /* changes state to display results */
   function showQuizResults(){
     setShowAnswers(true)
   }
 
+  /* generates new set of 5 random questions */
   function playAgain(){
     setShowAnswers(false)
-    setTrivia(setQuestions(data.results))
+      fetch('https://opentdb.com/api.php?amount=5')
+        .then(res => res.json())
+        .then(data => {
+          setTrivia(setQuestions(data.results))
+        })
     setCount(prevState => prevState = 0)
   }
   

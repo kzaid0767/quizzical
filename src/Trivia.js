@@ -19,7 +19,7 @@ function Trivia(props) {
         setTriviaChoices(prevState => prevState.map(el=>{
             if(el.id===id){
                 
-                return {...el, isSelected:!el.isSelected}
+                return {...el, isSelected:true}
             } else return {...el, isSelected:false}
         }))
 
@@ -30,9 +30,9 @@ function Trivia(props) {
         for(let obj of triviaChoices){
             if(obj.isSelected && obj.isTheAnswer){
                 props.countRightAnswers()
-            }
+            } 
         }
-    }, [triviaChoices])
+    }, [props.showAnswers])
 
 
     
@@ -40,11 +40,13 @@ function Trivia(props) {
     const answersTags = triviaChoices.map(answer=><AnswerChoice text={answer.text}
         handleClick = {()=>handleAddAnswer(answer.id)}
         id ={answer.id}
+        key={answer.id}
         isSelected={answer.isSelected}/>)
 
     /* results to diplay when user checks his answers */
     const correctedTrivias = triviaChoices.map(answer => <Result 
         text={answer.text}
+        key={answer.id}
         isSelected={answer.isSelected}
         isTheAnswer={answer.isTheAnswer}
         />
@@ -68,16 +70,6 @@ function Trivia(props) {
         return array;
 }
 
-    function countNumberCorrect(){
-        let correct= false
-        for(let el of triviaChoices){
-            if(el.isSelected && el.isTheAnswer){
-                correct = !correct
-                return
-            }
-        }
-        return correct
-    }
 
 
     return (

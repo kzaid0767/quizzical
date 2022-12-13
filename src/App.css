@@ -17,6 +17,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 34rem;
+  height: 34rem;
 }
 
 .h1-intro{
@@ -48,7 +50,7 @@
 
 .trivia-div{
   padding: 2rem;
-
+  
 }
 
 .h3-question{
