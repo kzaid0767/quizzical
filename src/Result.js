@@ -10,11 +10,17 @@ function Result(props) {
         
     }
 
+    function decodeHTMLEntities(text) {
+        let textArea = document.createElement('textarea');
+        textArea.innerHTML = text;
+        return textArea.value;
+      }
+
     return (
         <p
         className='p-result'
         style={styles} 
-        >{props.text}
+        >{decodeHTMLEntities(props.text)}
         </p>
     )
 }

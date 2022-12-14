@@ -8,13 +8,19 @@ function AnswerChoice(props) {
         border: props.isSelected ? 'none' : 'solid 0.794239px'
     }
 
+    function decodeHTMLEntities(text) {
+        let textArea = document.createElement('textarea');
+        textArea.innerHTML = text;
+        return textArea.value;
+      }
+
   return (
     <p key={nanoid()}
         onClick={props.handleClick}
         style={styles}    
         className='p-answers'
         id={props.id}
-        >{props.text}
+        >{decodeHTMLEntities(props.text)}
     </p>)
   
 }

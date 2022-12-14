@@ -68,13 +68,19 @@ function Trivia(props) {
         }
 
         return array;
-}
+    }
 
+    /* this function decodes html entities */
+    function decodeHTMLEntities(text) {
+        let textArea = document.createElement('textarea');
+        textArea.innerHTML = text;
+        return textArea.value;
+      }
 
 
     return (
         <div className='trivia-div'>
-            <h3 className='h3-question'>{props.allData.question}</h3>
+            <h3 className='h3-question'>{decodeHTMLEntities(props.allData.question)}</h3>
             {props.showAnswers?correctedTrivias:answersTags}
             <hr />
         </div>
