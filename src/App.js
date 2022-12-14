@@ -83,7 +83,7 @@ function App() {
     <div className="App">
       {!startQuiz && <Intro beginQuiz={()=>showQuiz()} />}
       {startQuiz && allTrivias}
-      {showAnswers && <div className='score-display'> <h3>You scored {count}/{trivias.length} correct answers </h3>
+      {showAnswers && <div className='score-display'> <h3 className='h3-userscore'>You scored {count}/{trivias.length} correct answers </h3>
       <button onClick={playAgain} className='button-check'>Play again</button>
       </div>}
       {!showAnswers && startQuiz && <button onClick={showQuizResults} className='button-check'>Check answers</button> }

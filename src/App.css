@@ -9,13 +9,13 @@
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-  width: 45vw;
-  margin: 3rem auto;
+  width: 70vw;
+  margin: 2rem auto;
   color: #293264;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  box-shadow: 5px 5px 5px 1px blue;
+  box-shadow: 5px 5px 5px 1px grey;
 }
 
 /* All about the intro div */
@@ -23,7 +23,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width:45vw;
+  width:70vw;
   height: 34rem;
 }
 
@@ -78,8 +78,10 @@ hr{
   border-radius: 0.625rem;
   border: none;
   font-size: 0.8rem;
+  padding: 0.5rem;
   font-weight: 600;
   text-align: center;
+  line-height: 1;
   color: #F5F7FB;
   margin: 0 auto 2rem;
   cursor: pointer;
@@ -121,4 +123,9 @@ hr{
   align-items: baseline;
   justify-content: center;
   padding: 0 3rem;
+}
+
+.h3-userscore{
+  text-align: center;
+  margin-right: 0.5rem;
 }
