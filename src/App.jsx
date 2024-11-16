@@ -41,7 +41,7 @@ function App() {
     setCount(0)
     setQuizStarted(false)
     setShowResults(false)
-    setGameOn(false)
+    setGameOn(prevState=>!prevState)
   }
 
   function handleStart(){
