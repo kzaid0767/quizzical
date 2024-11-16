@@ -4,12 +4,19 @@
 
 body{
   margin: 0;
-  background-image: url(./assets/background.png);
+  background-color: #e8eef8;
+  
+}
+
+.mainDiv{
+  /* background-image: url(./assets/background.png);
   background-repeat: no-repeat;
   background-size:cover;
-  height:100vh;
+  background-position: center; */
   font-family: "Karla", serif;
   color: #293264;
+  height:100vh;
+  padding-top: 1.5rem;
 }
 
 .introPage{
@@ -17,7 +24,7 @@ body{
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
-  margin-top: 50%;
+  margin-top: 20%;
 }
 .introPage > h1{
   margin-bottom: 0;
@@ -31,21 +38,38 @@ button{
   cursor: pointer;
 }
 
-.checkAnswersBtn{
-  width: 7.5rem;
-  height: 2.2rem;
+.Btn{
+  width: 7.1rem;
+  height: 1.6rem;
   display: flex;
   align-items: center;
   justify-content: center;
   place-self: center;
-  margin-top: 0.5rem;
+  /* margin-top: 0.5rem; */
+}
+
+.checkAnswers{
+  margin-top: 1rem;
+  height: 2rem;
 }
 
 .introBtn{
   width: 10rem;
   height: 3.25rem;
   font-size: 1.1rem;
-  
+}
+
+.playerResults{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+
+.playerResults p{
+  margin: 0 0.5rem 0.5rem 0;
+  font-weight: 600;
 }
 
 /* Question styles */
@@ -90,6 +114,10 @@ legend {
   cursor: pointer;
 }
 
+input:disabled{
+  cursor:not-allowed
+}
+
 .question input[type="radio"] {
   opacity: 0.01;
   z-index: 100;
@@ -123,10 +151,30 @@ legend {
 }
 
 /* label font size small screen */
+@media (max-width:550px) {
+  .questionRadios{
+    grid-template-columns: repeat(2,auto);
+    gap: 0.3rem;
+  }
+  
+}
+
+
 @media (max-width:425px) {
   .question label{
     font-size: 2.3vw;
   }
+}
+
+@media (min-width:560px) {
+  .playerResults{
+    flex-direction: row;    
+  }
+
+  .playerResults p{
+    margin-bottom: 0;
+  }
+
 }
 
 .question label:hover {
