@@ -8,6 +8,7 @@ import "./App.css";
 
 function App() {
   const [quizStarted,setQuizStarted] = useState(false)
+  const [gameon, setGameOn] = useState(false)
   
   const [allItems, setAllItems] = useState([])
 
@@ -24,7 +25,7 @@ function App() {
           }
           setAllItems(arr)
       })
-  },[quizStarted])
+  },[gameon])
 
   
   const [showResults,setShowResults] = useState(false)
@@ -40,7 +41,7 @@ function App() {
     setCount(0)
     setQuizStarted(false)
     setShowResults(false)
-
+    setGameOn(false)
   }
 
   function handleStart(){

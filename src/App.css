@@ -45,7 +45,7 @@ button{
   align-items: center;
   justify-content: center;
   place-self: center;
-  /* margin-top: 0.5rem; */
+
 }
 
 .checkAnswers{
@@ -79,7 +79,7 @@ button{
   border: none;
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 95%;
   margin: 0 auto;
   border-bottom: 2px solid #DBDEF0;
 }
@@ -143,8 +143,6 @@ input:disabled{
 .checkanswersBtn{
   display: flex;
   justify-content: center;
-  border: 1px red solid;
-  align-items: center;
 }
 
 /* font size of label for large screens */
