@@ -27,11 +27,108 @@ button{
   border: none;
   color: #F5F7FB;
   background-color: #4D5B9E;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.checkAnswersBtn{
+  width: 7.5rem;
+  height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  place-self: center;
+  margin-top: 0.5rem;
 }
 
 .introBtn{
   width: 10rem;
   height: 3.25rem;
   font-size: 1.1rem;
-  border-radius: 10px;
+  
+}
+
+/* Question styles */
+
+.question {
+  padding: 0.5rem;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
+  border-bottom: 2px solid #DBDEF0;
+}
+legend {
+  display: block;
+  font-size: 3vw;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.questionRadios{
+  display: grid;
+  grid-template-columns: repeat(4,auto);
+  margin-bottom: 0.4rem;
+}
+
+.eachOption {
+  float: left;
+  margin: 0 0.3rem 0 0;
+  
+  height: 2rem;
+  position: relative;
+}
+
+.question label,
+.question input {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+}
+
+.question input[type="radio"] {
+  opacity: 0.01;
+  z-index: 100;
+}
+
+.question input[type="radio"]:checked+label,
+.Checked+label {
+  background: #D6DBF5;
+  border: none;
+}
+
+.question label {
+  padding-left: 5px;
+  border: 1px solid #4D5B9E;
+  border-radius: 8px;
+  z-index: 90;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  font-size: 2vw;
+}
+
+/* font size of label for large screens */
+@media (min-width:650px) {
+  .question label{
+    font-size: 1rem;
+  }
+  legend{
+    font-size: 2.5vw;
+  }  
+}
+
+/* label font size small screen */
+@media (max-width:425px) {
+  .question label{
+    font-size: 2.3vw;
+  }
+}
+
+.question label:hover {
+  background: #DDD;
 }
