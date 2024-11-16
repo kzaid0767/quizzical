@@ -11,11 +11,12 @@ function App() {
   
   const [allItems, setAllItems] = useState([])
 
+  //load data upon first render
   useEffect(()=>{
     fetch('https://opentdb.com/api.php?amount=5&type=multiple')
       .then(res=> res.json())
       .then(data=> {
-          console.log(data)
+          
           let arr =[]
           for(let item of data.results){
             // arr.push(item.correct_answer)
@@ -34,7 +35,7 @@ function App() {
         setCount(prevState => prevState +1)
   }
 
-
+//reset game at the end
   function reset(){
     setCount(0)
     setQuizStarted(false)
@@ -82,7 +83,7 @@ function App() {
       {count===5 && <Confetti style={{width:'100%'}} />}
       {!quizStarted && <Intro start={handleStart}/> }
       {quizStarted && radios}
-      {quizStarted && !showResults && <button onClick={handleShowResults} className="checkAnswers Btn">Check answers</button>}
+      {quizStarted && !showResults && <div className="checkanswersBtn"><button onClick={handleShowResults} className="checkAnswers Btn">Check answers</button></div>}
       {showResults && <div className="playerResults"><p>{`You scored ${count}/5 corrent answers`}</p><button onClick={reset} className="Btn">Play again</button></div>}
     </div>
   );

@@ -140,6 +140,13 @@ input:disabled{
   font-size: 2vw;
 }
 
+.checkanswersBtn{
+  display: flex;
+  justify-content: center;
+  border: 1px red solid;
+  align-items: center;
+}
+
 /* font size of label for large screens */
 @media (min-width:650px) {
   .question label{
