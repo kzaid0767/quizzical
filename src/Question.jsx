@@ -3,7 +3,10 @@ import { useEffect, useState } from 'react'
 
 export default function Question(props){
 
+    //correct answer for this question
     const [answer, setAnswer] = useState(props.correctAnswer)
+
+    //user answer
     const [userAnswer, setUserAnswer] = useState('')
 
     function handleSetAnswer(e){
@@ -11,6 +14,7 @@ export default function Question(props){
         setUserAnswer(value)
     }
 
+    //use to count correct answers
     useEffect(()=>{
         if(userAnswer===props.correctAnswer){
             props.count()
@@ -18,7 +22,7 @@ export default function Question(props){
     },[userAnswer])
 
 
-
+    //all styles are inline
     return(
         <fieldset  className="question">
             <div><legend>{decode(props.question)}</legend></div>

@@ -62,6 +62,7 @@ function App() {
     return arr;
   }
 
+  //return questions or answer based on state
   const radios = allItems.map((item,idx) => {
     return showResults? <Question key={idx+1} 
                           answers={item.answers} 
